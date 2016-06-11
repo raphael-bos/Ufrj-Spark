@@ -1,5 +1,3 @@
-package dataAnalyzer
-
 import org.apache.spark.{SparkConf, SparkContext}
 import com.datastax.spark.connector._
 
