@@ -6,12 +6,8 @@ import spark.Spark._
 object SparkServer{
 
   def main(args: Array[String]) {
+
     port(8080)
-
-    val path = new File("").getAbsolutePath
-
-    println(path)
-
     staticFiles.location("main/resources/public")
 
     get("hello", new Route {
@@ -20,7 +16,7 @@ object SparkServer{
       }
     })
 
-    redirect.get("/","hello")
+    redirect.get("/","Index.html")
 
   }
 
