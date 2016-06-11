@@ -17,7 +17,6 @@
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.10/resource_managed/main" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../src/test/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../target/scala-2.10/resource_managed/test" type="java-test-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/../../src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../target" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/resolution-cache" />
       <excludeFolder url="file://$MODULE_DIR$/../../target/streams" />
@@ -37,8 +36,8 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-simple:1.7.21:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.slf4j:slf4j-log4j12:1.7.10:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-api:1.7.21:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.slf4j:slf4j-log4j12:1.7.10:jar" level="project" />
     <orderEntry type="library" name="SBT: org.apache.spark:spark-sql_2.10:1.6.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.apache.spark:spark-catalyst_2.10:1.6.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.eclipse.jetty.websocket:websocket-servlet:9.3.6.v20151106:jar" level="project" />

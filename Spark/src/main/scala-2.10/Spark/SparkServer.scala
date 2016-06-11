@@ -8,7 +8,8 @@ package Spark{
     def main(args: Array[String]) {
 
       port(8080)
-      staticFiles.location("main/resources/public")
+
+      staticFiles.location("/public")
 
       get("hello", new Route {
         def handle(request: Request, response: Response): AnyRef = {
