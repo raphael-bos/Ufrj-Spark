@@ -7,7 +7,7 @@
 		revision="1.0"
 		conf="runtime-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20160611141058"/>
+		date="20160611143034"/>
 	<dependencies>
 		<module organisation="org.slf4j" name="slf4j-simple">
 			<revision name="1.7.21" status="release" pubdate="20160404164342" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.slf4j.org" downloaded="false" searched="false" default="false" conf="default, compile, runtime, default(compile), master" position="151">
@@ -595,7 +595,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-mapreduce-client-jobclient">
 			<revision name="2.2.0" status="release" pubdate="20131007033723" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="53">
-				<metadata-artifact status="successful" details="" size="5474" time="717" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-jobclient/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-jobclient/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-jobclient/2.2.0/hadoop-mapreduce-client-jobclient-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="5474" time="731" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-jobclient/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-jobclient/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-jobclient/2.2.0/hadoop-mapreduce-client-jobclient-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-mapreduce-client-jobclient" type="jar" ext="jar" status="no" details="" size="35216" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-jobclient/jars/hadoop-mapreduce-client-jobclient-2.2.0.jar">
@@ -641,7 +641,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-mapreduce-client-app">
 			<revision name="2.2.0" status="release" pubdate="20131007033711" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="31">
-				<metadata-artifact status="successful" details="" size="4335" time="711" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-app/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-app/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-app/2.2.0/hadoop-mapreduce-client-app-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="4335" time="721" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-app/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-app/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-app/2.2.0/hadoop-mapreduce-client-app-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-mapreduce-client-app" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="278865" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-app/srcs/hadoop-mapreduce-client-app-2.2.0-sources.jar">
@@ -655,7 +655,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-mapreduce-client-shuffle">
 			<revision name="2.2.0" status="release" pubdate="20131007033703" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="52">
-				<metadata-artifact status="successful" details="" size="1675" time="702" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-shuffle/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-shuffle/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-shuffle/2.2.0/hadoop-mapreduce-client-shuffle-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="1675" time="858" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-shuffle/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-shuffle/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-shuffle/2.2.0/hadoop-mapreduce-client-shuffle-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-mapreduce-client-shuffle" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="10605" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-shuffle/srcs/hadoop-mapreduce-client-shuffle-2.2.0-sources.jar">
@@ -669,7 +669,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-server-nodemanager">
 			<revision name="2.2.0" status="release" pubdate="20131007033538" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="54">
-				<metadata-artifact status="successful" details="" size="7324" time="750" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-nodemanager/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-nodemanager/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-server-nodemanager/2.2.0/hadoop-yarn-server-nodemanager-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="7324" time="745" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-nodemanager/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-nodemanager/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-server-nodemanager/2.2.0/hadoop-yarn-server-nodemanager-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-yarn-server-nodemanager" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="262442" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-nodemanager/srcs/hadoop-yarn-server-nodemanager-2.2.0-sources.jar">
@@ -683,7 +683,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-mapreduce-client-common">
 			<revision name="2.2.0" status="release" pubdate="20131007033659" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="32">
-				<metadata-artifact status="successful" details="" size="3273" time="705" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-common/2.2.0/hadoop-mapreduce-client-common-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="3273" time="703" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-common/2.2.0/hadoop-mapreduce-client-common-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-mapreduce-client-common" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="244749" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-common/srcs/hadoop-mapreduce-client-common-2.2.0-sources.jar">
@@ -697,7 +697,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-server-common">
 			<revision name="2.2.0" status="release" pubdate="20131007033526" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="51">
-				<metadata-artifact status="successful" details="" size="3534" time="700" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-server-common/2.2.0/hadoop-yarn-server-common-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="3534" time="728" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-server-common/2.2.0/hadoop-yarn-server-common-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-yarn-server-common" type="jar" ext="jar" status="no" details="" size="175554" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-server-common/jars/hadoop-yarn-server-common-2.2.0.jar">
@@ -711,7 +711,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-mapreduce-client-core">
 			<revision name="2.2.0" status="release" pubdate="20131007033626" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="50">
-				<metadata-artifact status="successful" details="" size="3085" time="699" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-core/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-core/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-core/2.2.0/hadoop-mapreduce-client-core-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="3085" time="717" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-core/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-core/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-mapreduce-client-core/2.2.0/hadoop-mapreduce-client-core-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-mapreduce-client-core" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="1008328" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-mapreduce-client-core/srcs/hadoop-mapreduce-client-core-2.2.0-sources.jar">
@@ -725,7 +725,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-client">
 			<revision name="2.2.0" status="release" pubdate="20131007033604" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="49">
-				<metadata-artifact status="successful" details="" size="1961" time="692" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-client/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-client/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-client/2.2.0/hadoop-yarn-client-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="1961" time="720" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-client/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-client/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-client/2.2.0/hadoop-yarn-client-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-yarn-client" type="jar" ext="jar" status="no" details="" size="94728" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-client/jars/hadoop-yarn-client-2.2.0.jar">
@@ -739,7 +739,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-common">
 			<revision name="2.2.0" status="release" pubdate="20131007033515" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="33">
-				<metadata-artifact status="successful" details="" size="5032" time="695" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-common/2.2.0/hadoop-yarn-common-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="5032" time="714" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-common/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-common/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-common/2.2.0/hadoop-yarn-common-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-yarn-common" type="src" ext="jar" extra-classifier="sources" status="no" details="" size="634761" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-common/srcs/hadoop-yarn-common-2.2.0-sources.jar">
@@ -753,7 +753,7 @@
 		</module>
 		<module organisation="org.apache.hadoop" name="hadoop-yarn-api">
 			<revision name="2.2.0" status="release" pubdate="20131007033452" resolver="jcenter" artresolver="jcenter" homepage="" downloaded="true" searched="true" default="false" conf="default, compile, runtime, default(compile), master" position="34">
-				<metadata-artifact status="successful" details="" size="2956" time="704" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-api/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-api/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-api/2.2.0/hadoop-yarn-api-2.2.0.pom"/>
+				<metadata-artifact status="successful" details="" size="2956" time="700" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-api/ivy-2.2.0.xml" searched="true" original-local-location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-api/ivy-2.2.0.xml.original" origin-is-local="false" origin-location="https://jcenter.bintray.com/org/apache/hadoop/hadoop-yarn-api/2.2.0/hadoop-yarn-api-2.2.0.pom"/>
 				<caller organisation="default" name="spark$sources_2.10" conf="compile, runtime-internal, runtime, optional" rev="2.2.0" rev-constraint-default="2.2.0" rev-constraint-dynamic="2.2.0" callerrev="1.0"/>
 				<artifacts>
 					<artifact name="hadoop-yarn-api" type="jar" ext="jar" status="no" details="" size="1158936" time="0" location="/home/raphael/.ivy2/cache/org.apache.hadoop/hadoop-yarn-api/jars/hadoop-yarn-api-2.2.0.jar">
