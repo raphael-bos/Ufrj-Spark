@@ -7,13 +7,13 @@ package Spark{
 
     def main(args: Array[String]) {
 
-      port(8080)
+      port(80)
 
       staticFiles.location("/public")
 
       get("hello", new Route {
         def handle(request: Request, response: Response): AnyRef = {
-          "Hello!"
+          "Hello Gatinha!"
         }
       })
 
