@@ -27,4 +27,30 @@ object Cassandra {
                       inep: String,
                       coordenador: String
                     )
+
+  case class Professores(
+                        designacao: String,
+                        artes_cenicas: Int,
+                        artes_industriais: Int,
+                        artes_plasticas: Int,
+                        ciencias: Int,
+                        educacao_fisica: Int,
+                        educacao_musical: Int,
+                        educacao_lar: Int,
+                        espanhol: Int,
+                        frances: Int,
+                        geografia: Int,
+                        historia: Int,
+                        ingles: Int,
+                        portugues: Int,
+                        matematica: Int,
+                        tecnicas_agricolas: Int,
+                        tecnicas_comerciais: Int,
+                        educacao_infantil: Int,
+                        ensino_fundamental: Int,
+                        ensino_religioso: Int,
+                        professor_2: Int
+                        )
+
+  case class Frequencia_e_Aprovacao(designacao: String, ano: String, codigo_serie: Int, descricao_serie: String, avaliados: Int, aprovados: Int, reprovados: Int)
 }

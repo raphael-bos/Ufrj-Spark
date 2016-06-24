@@ -1,7 +1,7 @@
 package utils
 
 import Spark.SparkManager.sparkContext
-import schemas.Cassandra.Escola
+import schemas.Cassandra.{Escola, Frequencia_e_Aprovacao, Professores}
 import com.datastax.spark.connector._
 
 /**
@@ -9,13 +9,14 @@ import com.datastax.spark.connector._
   */
 object CassandraLoader {
 
+  val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
+
   def escolas(): Unit ={
 
-    val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
     val fileName = "escolas__.csv"
 
     val text = sparkContext.textFile(basePath + fileName)
-    val lista = text.map(x => x.split(","))
+    val lista = text.map(line => line.split(","))
       .filter(x => x.length > 18)
       .filter(x =>{
         try{
@@ -33,6 +34,52 @@ object CassandraLoader {
     lista.saveToCassandra("spark","escolas")
   }
 
+  def professores(): Unit ={
+
+    val filename = "ProfessoresEscola.csv"
+    val text = sparkContext.textFile(basePath + filename)
+    val lista = text.map(line => line.split(","))
+        .filter(x => x.length > 1)
+        .filter(x => x(0) != "Nome")
+        .map(x => {
+          if(x(1).length == 6)
+            x(1) = "0"+x(1)
+          x
+        })
+      .map(x => new Professores(x(1), x(3).toInt, x(4).toInt, x(5).toInt, x(6).toInt, x(7).toInt,
+        x(8).toInt, x(9).toInt, x(10).toInt, x(11).toInt, x(12).toInt, x(13).toInt, x(14).toInt,
+        x(15).toInt, x(16).toInt, x(17).toInt, x(18).toInt, x(19).toInt, x(20).toInt, x(21).toInt, x(22).toInt))
+
+   lista.saveToCassandra("spark","professores")
+
+  }
+
+  def frequencia_e_aprovacao(): Unit ={
+    val path = basePath + "Frequencia/"
+    val listaId = sparkContext.cassandraTable[Escola]("spark","escolas").map(x => x.designacao)
+
+    listaId.foreach(id =>{
+      val text = sparkContext.textFile(path + id + ".csv")
+      val lista =text.map(x => x.split(","))
+        .filter(x => x.length > 1)
+        .filter(x => x(0) != "Ano Letivo")
+        .filter(x => x(3) != "Total")
+        .map(x =>{
+          if(x(2) == "")
+            x(2) = "0"
+          if(x(4) == "")
+            x(4) = "0"
+          if(x(5) == "")
+            x(5) = "0"
+          if(x(6) == "")
+            x(6) = "0"
+          x
+        })
+        .map(x => new Frequencia_e_Aprovacao(id, x(0), x(2).toInt, x(3), x(4).toInt, x(5).toInt, x(6).toInt))
+
+      lista.saveToCassandra("spark","frequencia_e_aprovacao")
+    })
+  }
 
 
 }

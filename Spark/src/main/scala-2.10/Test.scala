@@ -10,6 +10,6 @@ object Test {
 
   def main(args: Array[String]): Unit = {
     buildConfigureSpark()
-    Downloader.frequenciaEscolar()
+    CassandraLoader.frequencia_e_aprovacao()
   }
 }
