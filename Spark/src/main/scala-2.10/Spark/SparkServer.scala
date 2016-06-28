@@ -7,7 +7,7 @@ package Spark{
 
     def main(args: Array[String]) {
 
-      port(80)
+      port(8080)
 
       staticFiles.location("/public")
 
