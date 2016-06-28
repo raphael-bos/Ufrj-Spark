@@ -74,13 +74,9 @@
     <orderEntry type="library" name="SBT: org.sonatype.sisu.inject:cglib:2.2.1-v20090111:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:jul-to-slf4j:1.7.10:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:jcl-over-slf4j:1.7.10:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scalap:2.10.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scala-compiler:2.10.0:jar" level="project" />
     <orderEntry type="library" name="SBT: org.objenesis:objenesis:1.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.mortbay.jetty:jetty-util:6.1.26:jar" level="project" />
     <orderEntry type="library" name="SBT: org.json4s:json4s-jackson_2.10:3.2.10:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.json4s:json4s-core_2.10:3.2.10:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.json4s:json4s-ast_2.10:3.2.10:jar" level="project" />
     <orderEntry type="library" name="SBT: org.eclipse.jetty.orbit:javax.servlet:3.0.0.v201112011016:jar" level="project" />
     <orderEntry type="library" name="SBT: org.codehaus.jettison:jettison:1.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.codehaus.jackson:jackson-xc:1.8.8:jar" level="project" />
@@ -141,7 +137,6 @@
     <orderEntry type="library" name="SBT: com.typesafe:config:1.2.1:jar" level="project" />
     <orderEntry type="library" name="SBT: com.twitter:chill_2.10:0.5.0:jar" level="project" />
     <orderEntry type="library" name="SBT: com.twitter:chill-java:0.5.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: com.thoughtworks.paranamer:paranamer:2.6:jar" level="project" />
     <orderEntry type="library" name="SBT: com.sun.xml.bind:jaxb-impl:2.2.3-1:jar" level="project" />
     <orderEntry type="library" name="SBT: com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2:1.9:jar" level="project" />
     <orderEntry type="library" name="SBT: com.sun.jersey.contribs:jersey-guice:1.9:jar" level="project" />
@@ -163,7 +158,6 @@
     <orderEntry type="library" name="SBT: com.clearspring.analytics:stream:2.7.0:jar" level="project" />
     <orderEntry type="library" name="SBT: asm:asm:3.2:jar" level="project" />
     <orderEntry type="library" name="SBT: aopalliance:aopalliance:1.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.10.5:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-reflect:2.10.5:jar" level="project" />
     <orderEntry type="library" name="SBT: org.joda:joda-convert:1.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.apache.commons:commons-lang3:3.3.2:jar" level="project" />
@@ -194,5 +188,12 @@
     <orderEntry type="library" name="SBT: org.tachyonproject:tachyon-underfs-local:0.8.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.tachyonproject:tachyon-underfs-s3:0.8.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.xerial.snappy:snappy-java:1.1.2:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.google.code.gson:gson:2.7:jar" level="project" />
+    <orderEntry type="library" name="SBT: com.thoughtworks.paranamer:paranamer:2.6:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.json4s:json4s-ast_2.10:3.2.10:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.json4s:json4s-core_2.10:3.2.10:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-compiler:2.10.0:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.10.5:jar" level="project" />
+    <orderEntry type="library" name="SBT: org.scala-lang:scalap:2.10.0:jar" level="project" />
   </component>
 </module>

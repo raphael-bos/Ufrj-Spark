@@ -12,6 +12,7 @@
             type: "POST",
             url: url,
             async: async,
+            dataType: "text json",
             contentType: "application/json; charset=utf-8",
             data: parametros,
             success: sucesso,
@@ -93,7 +94,8 @@
             toastr.warning(xmlHttpRequest.responseText);
             //Erros tratados
         } else {
-            toastr.error(window.generalError);
+            //toastr.error(window.generalError);
+            alert(errorThrown);
         }
         Unblock();
     };

@@ -26,5 +26,6 @@ libraryDependencies ++= Seq(
   "com.datastax.spark" % "spark-cassandra-connector_2.10" % "1.6.0-M2",
   "org.apache.spark" % "spark-sql_2.10" % "1.6.1",
   "com.sparkjava" % "spark-core" % "2.5",
-  "org.slf4j" % "slf4j-simple" % "1.7.21"
+  "org.slf4j" % "slf4j-simple" % "1.7.21",
+  "com.google.code.gson" % "gson" % "2.7"
 )
