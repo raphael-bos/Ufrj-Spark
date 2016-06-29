@@ -28,7 +28,7 @@ object Cassandra {
                       coordenador: String
                     )
 
-  case class Professores(
+  case class Professores2(
                         designacao: String,
                         artes_cenicas: Int,
                         artes_industriais: Int,
@@ -52,7 +52,7 @@ object Cassandra {
                         professor_2: Int
                         )
 
-  case class Professores2(designacao: String, ordem_materia: Int, descricao_materia: String, quantidade: Int)
+  case class Professores(designacao: String, ordem_materia: Int, descricao_materia: String, quantidade: Int)
 
   case class Frequencia_e_Aprovacao(designacao: String, ano: String, codigo_serie: Int, descricao_serie: String, avaliados: Int, aprovados: Int, reprovados: Int)
   case class Media(designacao: String, ano: String, bimestre: Int, ordem_serie: Int, serie: Int, ordem_materia: Int, descricao_serie: String,

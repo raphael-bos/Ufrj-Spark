@@ -1,5 +1,6 @@
 package Spark
 
+import com.google.gson.Gson
 import org.apache.spark.{SparkConf, SparkContext}
 
 object SparkManager {
@@ -20,5 +21,6 @@ object SparkManager {
   }
 
   lazy val sparkContext : SparkContext = context
+  val gson : Gson = new Gson()
 
 }

@@ -2,31 +2,23 @@ package Spark{
 
   import spark.{Request, Response, Route}
   import spark.Spark._
-
-  import scala.collection.mutable.ListBuffer
-  //import org.json4s._
-  //import org.json4s.native.JsonMethods._
-  //import org.json4s.JsonDSL._
-  import com.google.gson._
+  import Spark.SparkManager._
+  import analyser.Methods._
+  import schemas.Cassandra.Professores
 
   object SparkServer {
 
     case class obj(Id: Int)
     case class dados(Nome: String, Telefone: Int)
 
-    def main(args: Array[String]) {
-
-      port(8080)
-
-      val gson = new Gson()
-
+    def configureServer(): Unit ={
+      port(8000)
       staticFiles.location("/public")
+      configureMethods()
+      redirect.get("/", "Index.html")
+    }
 
-      get("hello", new Route {
-        def handle(request: Request, response: Response): AnyRef = {
-          "Hello"
-        }
-      })
+    def configureMethods(): Unit ={
 
       post("Index.html/Metodo", new Route {
         def handle(request: Request, response: Response): AnyRef ={
@@ -36,9 +28,15 @@ package Spark{
         }
       })
 
-      redirect.get("/", "Index.html")
+      post("Index.html/professores", new Route {
+        def handle(request: Request, response: Response): AnyRef = {
+          val resposta: Array[Professores] = buscarProfessores()
+          gson.toJson(resposta)
+        }
+      })
 
     }
+
   }
 
 }
