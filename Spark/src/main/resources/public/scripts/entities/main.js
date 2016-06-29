@@ -40,7 +40,7 @@ if (!$) {
         spinner.spin(document.getElementById("chart_div"));
         var metodo = $('#selecao').val()
         $.sendAjax(window.currentPath + metodo, JSON.stringify(""), function (retorno) {
-            var formatedData = retorno.map( x => [x.descricao_materia, x.quantidade])
+            var formatedData = retorno.map(function(x){return [x.descricao_materia, x.quantidade]})
                 .sort((y,x) => x[1] - y[1]); //Ordenar por quantidade
             var dataTable = [["Professores", "Quantidade"]];
             dataTable = dataTable.concat(formatedData);
