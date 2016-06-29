@@ -35,6 +35,7 @@
         </SOURCES>
       </library>
     </orderEntry>
+    <orderEntry type="library" name="SBT: commons-net:commons-net:3.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-simple:1.7.21:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-api:1.7.21:jar" level="project" />
     <orderEntry type="library" name="SBT: org.slf4j:slf4j-log4j12:1.7.10:jar" level="project" />
@@ -172,14 +173,8 @@
     <orderEntry type="library" name="SBT: com.twitter:jsr166e:1.1.0:jar" level="project" />
     <orderEntry type="library" name="SBT: com.google.guava:guava:16.0.1:jar" level="project" />
     <orderEntry type="library" name="SBT: com.datastax.cassandra:cassandra-driver-core:3.0.0:jar" level="project" />
-    <orderEntry type="library" name="SBT: commons-net:commons-net:2.2:jar" level="project" />
     <orderEntry type="library" name="SBT: net.razorvine:pyrolite:4.9:jar" level="project" />
     <orderEntry type="library" name="SBT: net.sf.py4j:py4j:0.9:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.apache.spark:spark-core_2.10:1.6.1:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.apache.spark:spark-launcher_2.10:1.6.1:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.apache.spark:spark-network-common_2.10:1.6.1:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.apache.spark:spark-network-shuffle_2.10:1.6.1:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.apache.spark:spark-unsafe_2.10:1.6.1:jar" level="project" />
     <orderEntry type="library" name="SBT: org.apache.xbean:xbean-asm5-shaded:4.4:jar" level="project" />
     <orderEntry type="library" name="SBT: org.fusesource.leveldbjni:leveldbjni-all:1.8:jar" level="project" />
     <orderEntry type="library" name="SBT: org.roaringbitmap:RoaringBitmap:0.5.11:jar" level="project" />
@@ -187,7 +182,6 @@
     <orderEntry type="library" name="SBT: org.tachyonproject:tachyon-underfs-hdfs:0.8.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.tachyonproject:tachyon-underfs-local:0.8.2:jar" level="project" />
     <orderEntry type="library" name="SBT: org.tachyonproject:tachyon-underfs-s3:0.8.2:jar" level="project" />
-    <orderEntry type="library" name="SBT: org.xerial.snappy:snappy-java:1.1.2:jar" level="project" />
     <orderEntry type="library" name="SBT: com.google.code.gson:gson:2.7:jar" level="project" />
     <orderEntry type="library" name="SBT: com.thoughtworks.paranamer:paranamer:2.6:jar" level="project" />
     <orderEntry type="library" name="SBT: org.json4s:json4s-ast_2.10:3.2.10:jar" level="project" />
@@ -195,5 +189,17 @@
     <orderEntry type="library" name="SBT: org.scala-lang:scala-compiler:2.10.0:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scala-library:2.10.5:jar" level="project" />
     <orderEntry type="library" name="SBT: org.scala-lang:scalap:2.10.0:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.apache.spark:spark-core_2.10:1.6.1:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.apache.spark:spark-core_2.10:1.6.2:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.apache.spark:spark-launcher_2.10:1.6.1:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.apache.spark:spark-launcher_2.10:1.6.2:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.apache.spark:spark-network-common_2.10:1.6.1:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.apache.spark:spark-network-common_2.10:1.6.2:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.apache.spark:spark-network-shuffle_2.10:1.6.1:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.apache.spark:spark-network-shuffle_2.10:1.6.2:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.apache.spark:spark-unsafe_2.10:1.6.1:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.apache.spark:spark-unsafe_2.10:1.6.2:jar" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="SBT: org.xerial.snappy:snappy-java:1.1.2:jar" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="SBT: org.xerial.snappy:snappy-java:1.1.2.1:jar" level="project" />
   </component>
 </module>
