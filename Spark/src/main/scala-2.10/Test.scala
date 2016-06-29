@@ -11,6 +11,6 @@ object Test {
 
   def main(args: Array[String]): Unit = {
     buildConfigureSpark()
-    CassandraLoader.professores2()
+    CassandraLoader.professores()
   }
 }

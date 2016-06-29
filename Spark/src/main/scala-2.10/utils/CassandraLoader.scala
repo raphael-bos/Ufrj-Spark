@@ -35,7 +35,7 @@ object CassandraLoader {
     lista.saveToCassandra("spark","escolas")
   }
 
-  def professores(): Unit ={
+  def professores2(): Unit ={
 
     val filename = "ProfessoresEscola.csv"
     val text = sparkContext.textFile(basePath + filename)
@@ -51,11 +51,11 @@ object CassandraLoader {
         x(8).toInt, x(9).toInt, x(10).toInt, x(11).toInt, x(12).toInt, x(13).toInt, x(14).toInt,
         x(15).toInt, x(16).toInt, x(17).toInt, x(18).toInt, x(19).toInt, x(20).toInt, x(21).toInt, x(22).toInt))
 
-   lista.saveToCassandra("spark","professores")
+   lista.saveToCassandra("spark","professores2")
 
   }
 
-  def professores2(): Unit={
+  def professores(): Unit={
 
     val filename = "ProfessoresEscola.csv"
     val text = sparkContext.textFile(basePath + filename)
@@ -90,7 +90,7 @@ object CassandraLoader {
         new Professores2(x(1), 25, materiasMap(25), x(22).toInt)
       ))
 
-    lista.saveToCassandra("spark","professores2")
+    lista.saveToCassandra("spark","professores")
   }
 
   def frequencia_e_aprovacao(): Unit ={
