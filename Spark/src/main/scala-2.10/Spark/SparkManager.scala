@@ -10,7 +10,9 @@ object SparkManager {
   private var sparkConf:SparkConf = null
 
   def buildConfigureSpark() = {
-    sparkConf = new SparkConf().setAppName("ProjetoSpark").setMaster("local[*]").set("spark.cassandra.connection.host", "127.0.0.1")
+    sparkConf = new SparkConf().setAppName("ProjetoSpark")
+      .set("spark.cassandra.connection.host", "127.0.0.1")
+      //.setMaster("local[*]")
     context = new SparkContext(sparkConf)
   }
   def configureSpark() : SparkContext = {
