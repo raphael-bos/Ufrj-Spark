@@ -20,17 +20,23 @@ package Spark{
 
     def configureMethods(): Unit ={
 
-      post("Index.html/Metodo", new Route {
-        def handle(request: Request, response: Response): AnyRef ={
-          val objeto = gson.fromJson(request.body(), classOf[obj])
-          val retorno = gson.toJson(Array(dados("Nome1",20),dados("Nome2",30)))
-          retorno
-        }
-      })
-
       post("Index.html/professores", new Route {
         def handle(request: Request, response: Response): AnyRef = {
           val resposta: Array[Professores] = buscarProfessores()
+          gson.toJson(resposta)
+        }
+      })
+
+      post("Index.html/medias", new Route {
+        def handle(request: Request, response: Response): AnyRef = {
+          val resposta = buscarMedias()
+          gson.toJson(resposta)
+        }
+      })
+
+      post("Index.html/aprovacao", new Route {
+        def handle(request: Request, response: Response): AnyRef = {
+          val resposta = buscarAprovacao()
           gson.toJson(resposta)
         }
       })

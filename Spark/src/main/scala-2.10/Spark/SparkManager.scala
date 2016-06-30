@@ -12,7 +12,7 @@ object SparkManager {
   def buildConfigureSpark() = {
     sparkConf = new SparkConf().setAppName("ProjetoSpark")
       .set("spark.cassandra.connection.host", "127.0.0.1")
-      //.setMaster("local[*]")
+      .setMaster("local[*]")
     context = new SparkContext(sparkConf)
   }
   def configureSpark() : SparkContext = {

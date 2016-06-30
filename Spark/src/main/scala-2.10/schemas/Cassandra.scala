@@ -58,6 +58,8 @@ object Cassandra {
   case class Media(designacao: String, ano: String, bimestre: Int, ordem_serie: Int, serie: Int, ordem_materia: Int, descricao_serie: String,
                    codigo_materia: String, descricao_materia: String, media: Double)
 
+  case class EscolaInfo(designacao: String, nome: String, bairro: String, info: Any)
+
   val materiasMap = Map(
     1 -> "Ciencias",
     2 -> "Geografia",
