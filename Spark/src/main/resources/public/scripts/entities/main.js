@@ -4,13 +4,19 @@ if (!$) {
     }
 
     var ajax = {
-        metodo: "Metodo",
-        outroMetodo: "OutroMetodo"
+        Professores: "professores",
+        Media: "medias",
+        Aprovacao: "aprovacao"
     };
+
+    var titleSize = 26;
+    var pieHole = 0.4;
 
     var self = {};
 
-    var grafico;
+    var data;
+    var options;
+    var chart;
 
     var spinOpts = {
           lines: 12             // The number of lines to draw
@@ -34,51 +40,95 @@ if (!$) {
         , hwaccel: false        // Whether to use hardware acceleration (might be buggy)
         , position: 'absolute'  // Element positioning
         }
-    var spinner = new Spinner(spinOpts);
 
-    self.buscarDados = function(){
-        spinner.spin(document.getElementById("chart_div"));
-        var metodo = $('#selecao').val()
-        $.sendAjax(window.currentPath + metodo, JSON.stringify(""), function (retorno) {
+    var metodosBusca = {};
+
+    metodosBusca[ajax.Professores] = function(){
+        loadSimbol();
+        $.sendAjax(window.currentPath + ajax.Professores, JSON.stringify(""), function (retorno) {
             var formatedData = retorno.map(function(x){return [x.descricao_materia, x.quantidade]})
                 .sort((y,x) => x[1] - y[1]); //Ordenar por quantidade
             var dataTable = [["Professores", "Quantidade"]];
             dataTable = dataTable.concat(formatedData);
-            var data = google.visualization.arrayToDataTable(dataTable);
-            var options = {
+            data = google.visualization.arrayToDataTable(dataTable);
+            options = {
                 title: 'Distribuicao de Professores',
-                pieHole: 0.4,
-                };
+                titleTextStyle: { fontSize: titleSize },
+                pieHole: pieHole,
+                chartArea: {width: '90%', heigth: '90%'},
+            };
 
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-            grafico = chart.draw(data, options);
-            grafico();
-            spinner.stop();
+            chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+            unload();
         });
     }
 
-    self.redrawAllCharts = function(){
-      if(grafico)
-        grafico();
+    metodosBusca[ajax.Media] = function(){
+        loadSimbol();
+        $.sendAjax(window.currentPath + ajax.Media, JSON.stringify(""), function(retorno){
+          var formatedData = retorno.map(function(x){return {ano: x.ano, bimestre: x.bimestre, media: x.media, descricao: x.descricao_materia}})
+          .sort(function(y,x){
+            if(parseInt(y.ano) != parseInt(x.ano))
+              return y.ano - x.ano;
+            return y.bimestre - x.bimestre;
+          })
+          .map(function(x){ return [(x.ano + "/" + x.bimestre),x.media]})
+          var dataTable = [["Ano/Bimestre", "Matematica"]];
+          dataTable = dataTable.concat(formatedData);
+          data = google.visualization.arrayToDataTable(dataTable);
+          options = {
+              title: 'Evolucao da Media',
+              titleTextStyle: { fontSize: titleSize },
+              curveType: 'function',
+              legend: { position: 'bottom' },
+              chartArea: {width: '90%', heigth: '90%'},
+          };
+          chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+          chart.draw(data, options);
+          unload();
+        });
     }
 
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work',     11],
-        ['Eat',      2],
-        ['Commute',  2],
-        ['Watch TV', 2],
-        ['Sleep',    7]
-        ]);
-
-        var options = {
-            title: 'My Daily Activities',
-            pieHole: 0.4,
+    metodosBusca[ajax.Aprovacao] = function(){
+        loadSimbol();
+        $.sendAjax(window.currentPath + ajax.Aprovacao, JSON.stringify(""), function(retorno){
+            var formatedData = retorno.map(function(x){return [(x.nome + " - " + x.bairro),x.info]});
+            var dataTable = [["Escola - Bairro", "Aproveitamento %"]];
+            dataTable = dataTable.concat(formatedData);
+            data = google.visualization.arrayToDataTable(dataTable);
+            options = {
+                title: 'Melhores Aproveitamentos',
+                titleTextStyle: { fontSize: titleSize },
+                curveType: 'function',
+                legend: { position: 'bottom' },
+                chartArea: {width: '90%', heigth: '90%'},
             };
-
-            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
+            unload();
+        });
+    }
+
+    var spinner = new Spinner(spinOpts);
+
+    self.buscarDados = function(){
+        var metodo = $('#selecao').val();
+        metodosBusca[metodo]();
+    }
+
+    self.redrawAllCharts = function(){
+      if(chart)
+        chart.draw(data,options);
+    }
+
+    function loadSimbol(){
+        $("#chart_div").empty();
+        spinner.spin(document.getElementById("chart_div"));
+    }
+
+    function unload(){
+        spinner.stop();
     }
 
     return self;
