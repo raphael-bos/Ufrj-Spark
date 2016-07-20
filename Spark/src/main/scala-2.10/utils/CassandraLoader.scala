@@ -4,20 +4,22 @@ import Spark.SparkManager.sparkContext
 import schemas.Cassandra._
 import com.datastax.spark.connector._
 import org.apache.spark.rdd.RDD
+import scala.io.Source
 
 /**
   * Created by raphael on 22/06/16.
   */
 object CassandraLoader {
 
-  val basePath = "/home/ubuntu/DataRio/"
-  //val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
+  //val basePath = "/home/ubuntu/DataRio/"
+  val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
+  val encoding = "ISO-8859-1"
 
   def escolas(): Unit ={
 
     val fileName = "escolas__.csv"
 
-    val text = sparkContext.textFile(basePath + fileName)
+    val text = sparkContext.parallelize(Source.fromFile(basePath + fileName, encoding).getLines().toSeq)
     val lista = text.map(line => line.split(","))
       .filter(x => x.length > 18)
       .filter(x =>{
@@ -32,14 +34,14 @@ object CassandraLoader {
       .map(x => x:+ "")
       .map(x => new Escola(x(0), x(1), x(2), x(3), x(4), x(5), x(6), x(7), x(8),
         x(9), x(10), x(11), x(12), x(13), x(14), x(15),x(16), x(17), x(18), x(19)))
-
+    val teste = lista.collect()
     lista.saveToCassandra("spark","escolas")
   }
 
   def professores2(): Unit ={
 
-    val filename = "ProfessoresEscola.csv"
-    val text = sparkContext.textFile(basePath + filename)
+    val fileName = "ProfessoresEscola.csv"
+    val text = sparkContext.parallelize(Source.fromFile(basePath + fileName, encoding).getLines().toSeq)
     val lista = text.map(line => line.split(","))
         .filter(x => x.length > 1)
         .filter(x => x(0) != "Nome")
@@ -58,8 +60,8 @@ object CassandraLoader {
 
   def professores(): Unit={
 
-    val filename = "ProfessoresEscola.csv"
-    val text = sparkContext.textFile(basePath + filename)
+    val fileName = "ProfessoresEscola.csv"
+    val text = sparkContext.parallelize(Source.fromFile(basePath + fileName, encoding).getLines().toSeq)
     val lista: RDD[Professores]= text.map(line => line.split(","))
       .filter(x => x.length > 1)
       .filter(x => x(0) != "Nome")
@@ -99,7 +101,7 @@ object CassandraLoader {
     val listaId = sparkContext.cassandraTable[Escola]("spark","escolas").map(x => x.designacao)
 
     listaId.foreach(id =>{
-      val text = sparkContext.textFile(path + id + ".csv")
+      val text = sparkContext.parallelize(Source.fromFile(path + id + ".csv", encoding).getLines().toSeq)
       val lista =text.map(x => x.split(","))
         .filter(x => x.length > 1)
         .filter(x => x(0) != "Ano Letivo")
@@ -125,7 +127,7 @@ object CassandraLoader {
     val path = basePath + "Media/"
     val listaId = sparkContext.cassandraTable[Escola]("spark","escolas").map(x => x.designacao)
     listaId.foreach(id => {
-      val text = sparkContext.textFile(path + id + ".csv")
+      val text = sparkContext.parallelize(Source.fromFile(path + id + ".csv", encoding).getLines().toSeq)
       val lista = text.map(x => x.split(","))
         .filter(x => x.length == 11)
         .filter(x => x(0) != "Ano Letivo")

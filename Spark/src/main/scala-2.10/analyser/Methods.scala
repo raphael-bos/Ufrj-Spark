@@ -18,7 +18,7 @@ object Methods {
   }
 
   def buscarMedias(): Array[Media] ={
-    val medias = sparkContext.cassandraTable[Media]("spark","media")
+    val medias = sparkContext.parallelize(sparkContext.cassandraTable[Media]("spark","media").collect())
     val retorno = medias.filter(x => x.ordem_materia == 4)  //Selecionar matematica apenas
       .map(x => ((x.ano,x.bimestre),(x.media, 1))) //Agrupar por ano e bimestre
       .reduceByKey((acc, x) => {
