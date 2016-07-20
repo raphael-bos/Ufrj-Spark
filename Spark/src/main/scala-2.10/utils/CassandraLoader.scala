@@ -10,8 +10,8 @@ import org.apache.spark.rdd.RDD
   */
 object CassandraLoader {
 
-  //val basePath = "/home/ubuntu/DataRio/"
-  val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
+  val basePath = "/home/ubuntu/DataRio/"
+  //val basePath = "/home/raphael/Documents/Projetos/GitProj/DataRio/"
 
   def escolas(): Unit ={
 
