@@ -11,7 +11,7 @@ object SparkManager {
 
   def buildConfigureSpark() = {
     sparkConf = new SparkConf().setAppName("ProjetoSpark")
-      .set("spark.executor.memory","100m")
+      .set("spark.executor.memory","512m")
       .set("spark.cassandra.connection.host", "172.31.14.178")
       //.setMaster("local[*]")
     context = new SparkContext(sparkConf)
