@@ -11,6 +11,9 @@ object Test {
 
   def main(args: Array[String]): Unit = {
     buildConfigureSpark()
+    CassandraLoader.escolas()
     CassandraLoader.professores()
+    CassandraLoader.frequencia_e_aprovacao()
+    CassandraLoader.media()
   }
 }
