@@ -5,9 +5,9 @@ Implementado utilizando a tecnologia Spark, o banco de dados Cassandra e a lingu
 
 Integrantes:
 
-Caio Gomes Fontes Calaça Neves
-Douglas de Barros Basílio Silva
-Louise Martins Nogueira Landi
-Raphael Barros de Oliveira Santos
-Thiago Cosenza
+* Caio Gomes Fontes Calaça Neves
+* Douglas de Barros Basílio Silva
+* Louise Martins Nogueira Landi
+* Raphael Barros de Oliveira Santos
+* Thiago Cosenza
 
