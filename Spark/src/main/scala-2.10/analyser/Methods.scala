@@ -4,7 +4,7 @@ import com.datastax.spark.connector._
 import Spark.SparkManager._
 import schemas.Cassandra._
 import Utils._
-import schemas.DataObject.EvolucaoMedia
+import schemas.DataObject.{AprovacaoEscolas, EvolucaoMedia}
 import schemas.Filter.BasicFilter
 
 import scala.collection.mutable.ListBuffer
@@ -48,11 +48,7 @@ object Methods {
       .collect()
 
     val mediaByKey = dadosMedia.map(x => ((x.descricao_materia,x.descricao_serie,x.ano,x.bimestre),x.media)).toMap
-    val tempos = dadosMedia.map(x => (x.ano,x.bimestre)).distinct.sortWith((y,x) => {
-      if(y._1 != x._1)
-        y._1 < x._1
-      y._2 < x._2
-    })
+    val tempos = dadosMedia.map(x => (x.ano,x.bimestre)).distinct.sortWith((y,x) => (y._1 + y._2) < (x._1 + x._2))
     val materias = dadosMedia.map(x => (x.descricao_materia, x.descricao_serie)).distinct.sorted
 
     val arrayMedias = new Array[Array[Double]](tempos.length)
@@ -69,22 +65,24 @@ object Methods {
     retorno
   }
 
-  def buscarAprovacao(filter: BasicFilter): Array[EscolaInfo] ={
-    val aprovacao = sparkContext.cassandraTable[Frequencia_e_Aprovacao]("spark","frequencia_e_aprovacao")
-    val melhoresAprovacoes = aprovacao.map(x => (x.designacao,(x.aprovados,x.avaliados)))
-        .reduceByKey((acc, x) => (acc._1 + x._1, acc._2 + x._2))
-        .map(x => (x._1,(x._2._1.toDouble/x._2._2.toDouble)*100))
-      .map(x =>{
-      val arr = new Array[(String, Double)](5)
-      arr(0) = x
-      arr
-    }).reduce((acc, x) => mergeByMost(acc,x,5))
+  def buscarAprovacao(filter: BasicFilter): AprovacaoEscolas = {
+    val escolas = FilterMethods.getEscolas(filter)
+    val listaIds = escolas.map(x => (x.designacao,x))
 
-    val listaDesignacao = melhoresAprovacoes.map(x => x._1).mkString("','")
-    val escolas = sparkContext.cassandraTable[Escola]("spark","escolas").where("designacao in ('" + listaDesignacao + "')")
-    //val teste = escolas.colletct()
-    val escolasMap = melhoresAprovacoes.toMap
-    val retorno = escolas.map(x => new EscolaInfo(x.designacao,x.nome,x.bairro, escolasMap(x.designacao))).collect()
+    val aprovacao = sparkContext.cassandraTable[Frequencia_e_Aprovacao]("spark","frequencia_e_aprovacao")
+      .map(x => (x.designacao,x))
+      .join(listaIds) //FiltroEscolas
+      .map(x => x._2._1)
+      .filter(x => filter.anos.contains(x.ano))
+      .filter(x => filter.turmas.contains(x.codigo_serie))
+
+    val data = aprovacao.map(x => ((x.ano,x.descricao_serie),(x.avaliados,x.aprovados)))
+      .reduceByKey((acc, x) => (acc._1 + x._1, acc._2 + x._2))
+      .map(x => (x._1, (x._2._2.toDouble/x._2._1.toDouble)*100))
+      .map(x => (x._1._1 + " - " + x._1._2, x._2))
+      .collect()
+      .sortBy(x => x._1)
+    val retorno = new AprovacaoEscolas(data)
     retorno
   }
 

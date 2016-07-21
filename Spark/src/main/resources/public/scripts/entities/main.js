@@ -98,8 +98,8 @@ if (!$) {
 
     metodosBusca[ajax.Aprovacao] = function(){
         loadSimbol();
-        $.sendAjax(window.currentPath + ajax.Aprovacao, JSON.stringify(""), function(retorno){
-            var formatedData = retorno.map(function(x){return [(x.nome + " - " + x.bairro),x.info]});
+        $.sendAjax(window.currentPath + ajax.Aprovacao, JSON.stringify(basicFilter), function(retorno){
+            var formatedData = retorno.aprovacao.map(function(x){return [x._1, x._2]});
             var dataTable = [["Escola - Bairro", "Aproveitamento %"]];
             dataTable = dataTable.concat(formatedData);
             data = google.visualization.arrayToDataTable(dataTable);
