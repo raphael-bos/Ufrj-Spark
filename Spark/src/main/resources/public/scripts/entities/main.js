@@ -104,7 +104,7 @@ if (!$) {
             dataTable = dataTable.concat(formatedData);
             data = google.visualization.arrayToDataTable(dataTable);
             options = {
-                title: 'Melhores Aproveitamentos',
+                title: 'Aprovacao dos Estudantes',
                 titleTextStyle: { fontSize: titleSize },
                 curveType: 'function',
                 legend: { position: 'bottom' },
