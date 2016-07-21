@@ -12,6 +12,7 @@
     <script type="text/javascript" src="./scripts/lib/ajax-utils.js"></script>
     <script type="text/javascript" src="./scripts/lib/spin.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="./scripts/entities/sets.js"></script>
     <script type="text/javascript" src="./scripts/entities/main.js"></script>
 </head>
 <body>
@@ -39,14 +40,75 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
-            <p>O que gostaria de buscar?</p>
-            <select class="form-control" id="selecao">
-                <option value="professores">Distribuicao de todos os professores do municipio</option>
-                <option value="medias">Evolucao das medias de Matematica do municipio</option>
-                <option value="aprovacao">Escolas com maior indice de aprovacao (5)</option>
-            </select>
-            <br>
-            <button class="btn btn-primary" onclick="Main.buscarDados()">Buscar</button>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>O que gostaria de buscar?</h3>
+                    <select class="form-control" id="selecao">
+                        <option value="professores">Distribuicao de Professores</option>
+                        <option value="medias">Evolucao das Medias</option>
+                        <option value="aprovacao">Escolas com maior indice de aprovacao (5)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <br>
+                    <h3>Filtro Basico</h3>
+                    <br>
+                </div>
+                <div class="col-sm-7">
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div class="col-sm-3">
+                    <label>Bairros</label>
+                </div>
+                <div class="col-sm-9">
+                    <select id="selectBairros" class="form-control" multiple>
+                        <option id="todosBairros" value="0" selected>Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div class="col-sm-3">
+                    <label>Disciplinas</label>
+                </div>
+                <div class="col-sm-9">
+                    <select id="selectDisciplinas" class="form-control" multiple>
+                        <option id="todasDisciplinas" value="0" selected>Todas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div class="col-sm-3">
+                    <label>Anos</label>
+                </div>
+                <div class="col-sm-9">
+                    <select id="selectAnos" class="form-control" multiple>
+                        <option id="todosAnos" value="0" selected>Todos</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div class="col-sm-3">
+                    <label>Turmas</label>
+                </div>
+                <div class="col-sm-9">
+                    <select id="selectTurmas" class="form-control" multiple>
+                        <option id="todasTurmas" value="0" selected>Todas</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <br>
+                <div class="col-sm-12">
+                    <button class="btn btn-primary" onclick="Main.buscarDados()">Buscar</button>
+                </div>
+            </div>
         </div>
         <div class="col-sm-8">
             <div id="chart_div" class="chart"></div>
@@ -56,6 +118,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         window.currentPath = window.location.href + "/";
+        Sets;
+        Main.loadFilterOptions();
         google.charts.load("current", {packages:["corechart"]});
         $(window).resize(function(){
             Main.redrawAllCharts();

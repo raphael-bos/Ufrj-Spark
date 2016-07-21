@@ -4,33 +4,72 @@ import com.datastax.spark.connector._
 import Spark.SparkManager._
 import schemas.Cassandra._
 import Utils._
+import schemas.DataObject.EvolucaoMedia
+import schemas.Filter.BasicFilter
+
+import scala.collection.mutable.ListBuffer
 
 object Methods {
 
-  def buscarProfessores(): Array[Professores] ={
+  def buscarProfessores(filter: BasicFilter): Array[Professores] ={
+    val escolas = FilterMethods.getEscolas(filter)
+    val listaIds = escolas.map(x => (x.designacao,x))
+
     val professores = sparkContext.cassandraTable[Professores]("spark","professores")
+      .map(x => (x.designacao,x))
+      .join(listaIds) //FiltroEscolas
+      .map(x => x._2._1)
+      .filter(x => filter.disciplinas.contains(x.ordem_materia)) //Filtro Materia
+
     val retorno = professores.map(x => (x.ordem_materia,x.quantidade))
-        .filter(x => x._1 != 25) //Retirar professor 2
         .reduceByKey((acc, x) => acc + x)
         .map(x => new Professores("", x._1 , materiasMap(x._1), x._2))
         .collect()
     retorno
   }
 
-  def buscarMedias(): Array[Media] ={
+  def buscarMedias(filter: BasicFilter): EvolucaoMedia ={
+    val escolas = FilterMethods.getEscolas(filter)//.collect()
+    val listaIds = escolas.map(x => (x.designacao,x))
     val medias = sparkContext.cassandraTable[Media]("spark","media")
-    val retorno = medias.filter(x => x.ordem_materia == 4)  //Selecionar matematica apenas
-      .map(x => ((x.ano,x.bimestre),(x.media, 1))) //Agrupar por ano e bimestre
+        .map(x => (x.designacao,x))
+        .join(listaIds) //FiltroEscolas
+        .map(x => x._2._1)
+
+    val dadosMedia = medias.filter(x =>  filter.anos.contains(x.ano))
+      .filter(x => filter.turmas.contains(x.serie))
+      .filter(x => filter.disciplinas.contains(x.ordem_materia))
+      .map(x => ((x.ano,x.bimestre,x.ordem_materia,x.serie, x.descricao_serie),(x.media, 1))) //Agrupar por ano e bimestre
       .reduceByKey((acc, x) => {
         (acc._1 + x._1, acc._2 + x._2)
       })
-      .map(x => (x._1,x._2._1/x._2._2)) //Media das medias
-      .map(x => new Media("",x._1._1,x._1._2,0,0,4,materiasMap(4),"","",x._2))
+      .map(x => (x._1,x._2._1/x._2._2))
+      .map(x => new Media("",x._1._1,x._1._2,0,x._1._4,x._1._3,x._1._5,"", materiasMap(x._1._3),x._2))
       .collect()
+
+    val mediaByKey = dadosMedia.map(x => ((x.descricao_materia,x.descricao_serie,x.ano,x.bimestre),x.media)).toMap
+    val tempos = dadosMedia.map(x => (x.ano,x.bimestre)).distinct.sortWith((y,x) => {
+      if(y._1 != x._1)
+        y._1 < x._1
+      y._2 < x._2
+    })
+    val materias = dadosMedia.map(x => (x.descricao_materia, x.descricao_serie)).distinct.sorted
+
+    val arrayMedias = new Array[Array[Double]](tempos.length)
+    for(i <- arrayMedias.indices){
+      arrayMedias(i) = new Array(materias.length)
+      for(j <- arrayMedias(i).indices){
+        arrayMedias(i)(j) = mediaByKey(materias(j)._1,materias(j)._2,tempos(i)._1,tempos(i)._2)
+      }
+    }
+
+    val temposFormatados = tempos.map(x => x._1 + "/" + x._2)
+    val disciplinasFormatadas = materias.map(x => x._1 + " - " + x._2)
+    val retorno = new EvolucaoMedia(disciplinasFormatadas,temposFormatados,arrayMedias)
     retorno
   }
 
-  def buscarAprovacao(): Array[EscolaInfo] ={
+  def buscarAprovacao(filter: BasicFilter): Array[EscolaInfo] ={
     val aprovacao = sparkContext.cassandraTable[Frequencia_e_Aprovacao]("spark","frequencia_e_aprovacao")
     val melhoresAprovacoes = aprovacao.map(x => (x.designacao,(x.aprovados,x.avaliados)))
         .reduceByKey((acc, x) => (acc._1 + x._1, acc._2 + x._2))

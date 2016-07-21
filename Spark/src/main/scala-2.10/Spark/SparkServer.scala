@@ -5,6 +5,7 @@ package Spark{
   import Spark.SparkManager._
   import analyser.Methods._
   import schemas.Cassandra.Professores
+  import schemas.Filter.BasicFilter
 
   object SparkServer {
 
@@ -22,21 +23,24 @@ package Spark{
 
       post("Index.html/professores", new Route {
         def handle(request: Request, response: Response): AnyRef = {
-          val resposta: Array[Professores] = buscarProfessores()
+          val filter = gson.fromJson(request.body(),classOf[BasicFilter])
+          val resposta: Array[Professores] = buscarProfessores(filter)
           gson.toJson(resposta)
         }
       })
 
       post("Index.html/medias", new Route {
         def handle(request: Request, response: Response): AnyRef = {
-          val resposta = buscarMedias()
+          val filter = gson.fromJson(request.body(),classOf[BasicFilter])
+          val resposta = buscarMedias(filter)
           gson.toJson(resposta)
         }
       })
 
       post("Index.html/aprovacao", new Route {
         def handle(request: Request, response: Response): AnyRef = {
-          val resposta = buscarAprovacao()
+          val filter = gson.fromJson(request.body(),classOf[BasicFilter])
+          val resposta = buscarAprovacao(filter)
           gson.toJson(resposta)
         }
       })

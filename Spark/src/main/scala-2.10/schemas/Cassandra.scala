@@ -61,16 +61,16 @@ object Cassandra {
   case class EscolaInfo(designacao: String, nome: String, bairro: String, info: Any)
 
   val materiasMap = Map(
-    1 -> "Ciencias",
+    1 -> "Ciências",
     2 -> "Geografia",
     3 -> "Historia",
     4 -> "Matematica",
-    5 -> "Portugues",
+    5 -> "Português",
     6 -> "Artes Visuais",
     7 -> "Danca",
     8 -> "Musica",
     9 -> "Teatro",
-    10 -> "Educacao Fisica",
+    10 -> "Educação Física",
     11 -> "Espanhol",
     12 -> "Frances",
     13 -> "Ingles",

@@ -43,9 +43,16 @@ if (!$) {
 
     var metodosBusca = {};
 
+    var basicFilter = {
+        bairros: [],
+        disciplinas: [],
+        anos: [],
+        turmas: []
+    };
+
     metodosBusca[ajax.Professores] = function(){
         loadSimbol();
-        $.sendAjax(window.currentPath + ajax.Professores, JSON.stringify(""), function (retorno) {
+        $.sendAjax(window.currentPath + ajax.Professores, JSON.stringify(basicFilter), function (retorno) {
             var formatedData = retorno.map(function(x){return [x.descricao_materia, x.quantidade]})
                 .sort((y,x) => x[1] - y[1]); //Ordenar por quantidade
             var dataTable = [["Professores", "Quantidade"]];
@@ -66,16 +73,15 @@ if (!$) {
 
     metodosBusca[ajax.Media] = function(){
         loadSimbol();
-        $.sendAjax(window.currentPath + ajax.Media, JSON.stringify(""), function(retorno){
-          var formatedData = retorno.map(function(x){return {ano: x.ano, bimestre: x.bimestre, media: x.media, descricao: x.descricao_materia}})
-          .sort(function(y,x){
-            if(parseInt(y.ano) != parseInt(x.ano))
-              return y.ano - x.ano;
-            return y.bimestre - x.bimestre;
-          })
-          .map(function(x){ return [(x.ano + "/" + x.bimestre),x.media]})
-          var dataTable = [["Ano/Bimestre", "Matematica"]];
-          dataTable = dataTable.concat(formatedData);
+        $.sendAjax(window.currentPath + ajax.Media, JSON.stringify(basicFilter), function(retorno){
+          var legenda = retorno.disciplinas;
+          legenda.unshift("Ano/Bimestre");
+          for(i = 0; i < retorno.tempos.length ;i++)
+            retorno.medias[i].unshift(retorno.tempos[i]);
+
+          var dataTable = [legenda];
+          dataTable = dataTable.concat(retorno.medias);
+
           data = google.visualization.arrayToDataTable(dataTable);
           options = {
               title: 'Evolucao da Media',
@@ -114,12 +120,20 @@ if (!$) {
 
     self.buscarDados = function(){
         var metodo = $('#selecao').val();
+        loadBasicFilter();
         metodosBusca[metodo]();
     }
 
     self.redrawAllCharts = function(){
       if(chart)
         chart.draw(data,options);
+    }
+
+    self.loadFilterOptions = function(){
+        Sets.listaBairros.forEach(x => $("#selectBairros").append('<option value="'+ x +'">'+ x + '</option>'));
+        Sets.disciplinas.forEach(x => $("#selectDisciplinas").append('<option value="'+ x.cod +'">'+ x.descr + '</option>'));
+        Sets.anos.forEach(x => $("#selectAnos").append('<option value="'+ x +'">'+ x + '</option>'));
+        Sets.turmas.forEach(x => $("#selectTurmas").append('<option value="'+ x.cod +'">'+ x.descr + '</option>'));
     }
 
     function loadSimbol(){
@@ -131,5 +145,45 @@ if (!$) {
         spinner.stop();
     }
 
+    function loadBasicFilter(){
+        if($("#todosBairros").is(":selected"))
+            basicFilter.bairros = Sets.listaBairros.map(x => x);
+        else {
+            var options = $('#selectBairros option:selected');
+            basicFilter.bairros = $.map(options ,function(option) {
+                return option.value;
+            });
+        }
+
+        if($("#todasDisciplinas").is(":selected"))
+            basicFilter.disciplinas = Sets.disciplinas.map(x => x.cod);
+        else {
+            var options = $('#selectDisciplinas option:selected');
+            basicFilter.disciplinas = $.map(options ,function(option) {
+                return option.value;
+            });
+        }
+
+        if($("#todosAnos").is(":selected"))
+            basicFilter.anos = Sets.anos.map(x => x);
+        else {
+            var options = $('#selectAnos option:selected');
+            basicFilter.anos = $.map(options ,function(option) {
+                return option.text;
+            });
+        }
+
+        if($("#todasTurmas").is(":selected"))
+            basicFilter.turmas = Sets.turmas.map(x => x.cod);
+        else {
+            var options = $('#selectTurmas option:selected');
+            basicFilter.turmas = $.map(options ,function(option) {
+                return option.value;
+            });
+        }
+        basicFilter
+    }
+
     return self;
+
 })(jQuery, window);
